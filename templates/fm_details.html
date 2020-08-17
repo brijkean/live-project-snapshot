@@ -1,0 +1,51 @@
+{% extends 'CommunityFM/fm_base.html' %}
+{% load staticfiles %}
+{% block templatecontent %}
+<section>
+    <div class="flex-container radioIndex stationDetails" id="stationDetails">
+        <table>
+            <tr>
+                <th>Station Name</th>
+                <td class="col-md">{{station.station_name}}</td>
+            </tr>
+            <tr>
+                <th>Frequency</th>
+                {% if station.station_frequency == None %}
+                        <td class="col-md">Online Only</td>
+                    {% else %}
+                        <td class="col-md">{{station.station_frequency}}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td class="col-md">{{station.genre}}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td class="col-md">{{station.country}}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td class="col-md">{{station.state}}</td>
+            </tr>
+            <tr>
+                <th>Website/Streaming</th>
+                <td class="col-md"><a href="{{station.station_url}}">{{station.station_url}}</a></td>
+            </tr>
+        </table>
+        <br/>
+        <hr/>
+        <br/>
+        <div class="btn-container radio_center">
+            <button class="btn-radio" type="button" onclick=" location.href='{% url 'index' %}'">Back to Index</button>
+            <button class="btn-radio" type="button" onclick=" location.href='{% url 'deleteFM' station.pk %}'">Delete</button>
+            <button class="btn-radio" type="button" onclick=" location.href='{% url 'edit' station.pk %}'">Edit</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
